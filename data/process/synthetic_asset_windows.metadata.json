@@ -1,0 +1,18 @@
+{
+  "dataset_status": "SYNTHETIC",
+  "random_seed": 42,
+  "sampling_interval": "1 hour",
+  "time_span": "60 days",
+  "rows": 1440,
+  "stoppage_events": 30,
+  "detectable_events": 23,
+  "precursor_event_proportion": 0.7666666666666667,
+  "feature_units": {
+    "vibration": "mm/s",
+    "temperature": "\u00b0C",
+    "current": "A",
+    "load": "% rated load"
+  },
+  "missing_value_handling": "none generated; prep rejects missing values",
+  "clipping": "values clipped to specification simulation ranges"
+}

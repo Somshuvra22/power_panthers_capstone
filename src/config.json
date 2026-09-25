@@ -1,0 +1,16 @@
+{
+  "dataset_status": "SYNTHETIC",
+  "task": "binary classification of abnormal operating windows",
+  "target": "abnormal_window",
+  "approved_features": [
+    "rolling_vibration_trend",
+    "rolling_temperature_trend",
+    "rolling_current_trend",
+    "rolling_load_trend"
+  ],
+  "timestamp_column": "timestamp",
+  "audit_columns": ["event_id", "stop_timestamp", "precursor_detectable"],
+  "positive_label_definition": "Abnormal precursor window within two hours before an unplanned stoppage",
+  "decision_threshold": 0.5,
+  "random_seed": 42
+}

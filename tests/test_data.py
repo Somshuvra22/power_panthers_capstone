@@ -1,10 +1,14 @@
 import json
+import sys
 from pathlib import Path
 
 import pandas as pd
 
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
+
+from tab_utils import ensure_model_exists  # noqa: E402
 
 
 def _config():
@@ -36,3 +40,10 @@ def test_target_is_not_empty():
 def test_approved_features_are_present():
     frame = _data()
     assert set(_config()["approved_features"]).issubset(frame.columns)
+
+
+def test_model_is_created_when_missing(tmp_path):
+    model_dir = tmp_path / "models"
+    model_path = ensure_model_exists(model_dir)
+    assert model_path.exists()
+    assert model_path.name == "model.pkl"

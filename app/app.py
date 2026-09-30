@@ -13,7 +13,7 @@ SRC = ROOT / "src"
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
-from tab_utils import load_config, load_model  # noqa: E402
+from tab_utils import ensure_model_exists, load_config, load_model  # noqa: E402
 
 
 CONFIG = load_config()
@@ -26,8 +26,7 @@ def get_model():
     """Load the persisted local model once per Streamlit process."""
     if os.getenv("MODE", "local").lower() != "local":
         raise RuntimeError("Only MODE=local is supported; Azure/cloud modes are not available.")
-    if not MODEL_PATH.exists():
-        raise FileNotFoundError(f"Local model was not found at {MODEL_PATH}")
+    ensure_model_exists(ROOT / "models")
     return load_model(ROOT / "models")
 
 
